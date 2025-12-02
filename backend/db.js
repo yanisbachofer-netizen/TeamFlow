@@ -15,8 +15,10 @@ const db = new Low(adapter, defaultData);
 
 async function initDB() {
   await db.read();
-  db.data ||= defaultData;
-  await db.write();
+  if (!db.data) { // if db is empty, we fill it with defaultData
+    db.data = defaultData;
+    await db.write();
+  }
 }
 
 module.exports = { db, initDB };
