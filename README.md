@@ -3,58 +3,36 @@
 TeamFlow is a collaborative web application to help teams plan, track, and manage projects efficiently.  
 This repository contains both the **backend** (Node.js + Express + Lowdb) and the **frontend** (React + TailwindCSS).
 
-## Project Structure
+## Project Objective
 
-```
-teamflow/
-├── backend/                    # Backend folder (Node.js + Express + Lowdb)
-│   ├── package.json        # Project dependencies and scripts
-│   ├── app.js                    # Main server entry point: initializes DB and registers all routes
-│   ├── db.js                      # Lowdb database configuration and initialization
-│   ├── db.json                  # Lowdb storage file (JSON database)
-│   ├── models/                 # Data models (classes)
-│   │   ├── User.js                   # User class
-│   │   ├── Task.js                   # Task class
-│   │   ├── Message.js            # Message class
-│   ├── routes/                   # Express routes (endpoints)
-│   │   ├── auth.js                   # JWT endpoint (login)
-│   │   ├── users.js                  # User endpoints (create, list, update)
-│   │   ├── tasks.js                  # Task endpoints (create, list, update, delete)
-│   │   ├── messages.js          # Team messages endpoints (send, list)
-│   │   └── stats.js                  # Stats endpoints (tasks count, completed tasks, active users)
-│   └── utils/                      # Helper functions / middleware
-│       └── auth.js                  # JWT authentication helpers
-├── frontend/                             # Frontend folder (React + TailwindCSS)
-│   ├── package.json                     # Project dependencies and scripts
-│   ├── tailwind.config.js                # Tailwind configuration
-│   ├── postcss.config.js                # PostCSS configuration
-│   └── src/
-│       ├── main.jsx                     # React entry point
-│       ├── App.jsx                      # Main layout and routing between pages
-│       ├── pages/                       # Main pages corresponding to app features
-│       │   ├── Login.jsx                     # Login page
-│       │   ├── Dashboard.jsx            # Dashboard page showing statistics overview
-│       │   ├── Tasks.jsx                     # Task board page (list, filters, status updates)
-│       │   ├── Users.jsx                     # Page listing all users
-│       │   ├── Messages.jsx              # Internal team chat page
-│       ├── components/              # Reusable UI components
-│       │   ├── TaskCard.jsx                # Component for displaying a task
-│       │   ├── UserCard.jsx                # Component for displaying a user
-│       │   ├── MessageCard.jsx         # Component for displaying a chat message
-│       ├── services/                     # API and helper functions
-│       │   ├── api.js                             # Wrapper for calls to backend
-│       │   └── auth.js                           # Login/logout and JWT helper functions
-│       └── styles/                         # Styling
-│           └── global.css                       # Global Tailwind/utility CSS
-│
-└── README.md                       # Project description and instructions
-```
+- Provide a secure project management platform for teams.
+- Allow authenticated users to create, update, and filter tasks, and to view them in a task board.
+- Allow authenticated users to update their informations in their users page.
+- Allow authenticated users to use the team messaging feature.
 
-## Prerequisites
+## Team Members & Assigned Roles
+
+| Name               | GitHub Account                     | Role |
+|-------------------|----------------------------------|------|
+| Clément Pitrat | ClementPitrat / Clément Pitrat 20250076S | Setup Frontend entrypoint and App. |
+| | | Frontend Login page. |
+| Pacal Arnold | | Frontend Dashboard page. |
+| Yanis Gaoui | | Frontend Taskboard page. |
+| Hugo Boizet | | Frontend Users page. |
+| Eudes Peyrouny Mazeau | | Frontend Messages page. |
+| Damien Desmons | desmonsdamien03-hue / desmons_damien20250071S | TailwindCSS Styling. |
+| Garance Poignart | gpoignart / GarancePoignart_20250009S | Setup Backend entrypoint, models and database. Backend Messages API. |
+| Gauthier Humeau |  | Backend Authentification. Backend Login Management API. |
+| Clément Nicole | Clementncl / Clément Nicole 20250054S | Backend User Management API. |
+| Faustine Picavet | | Backend Task Management API. |
+| | | Backend Task Filters API. |
+| | | Backend Statistics API. |
+
+## Installation & Usage Guide
+
+### Prerequisites
 
 - Node.js and npm
-
-## Setup Instructions
 
 ### Clone the repository
 
@@ -70,8 +48,7 @@ cd backend
 npm install
 ```
 
-- Installs dependencies
-- `db.json` will be created automatically on first run
+- Install all dependencies.
 
 #### Start the backend
 
@@ -79,7 +56,7 @@ npm install
 npx nodemon app.js
 ```
 
-- Server runs on `http://localhost:5000` by default
+- Server runs on \`http://localhost:5000\`.
 
 ### Frontend Setup
 
@@ -88,7 +65,7 @@ cd ../frontend
 npm install
 ```
 
-- Installs dependencies
+- Install all dependencies.
 
 #### Start the frontend
 
@@ -96,5 +73,5 @@ npm install
 npm start
 ```
 
-- Runs React app on `http://localhost:3000`
-- Make sure the backend is running to fetch data from API
+- React app runs on \`http://localhost:3000\`.  
+- Ensure the backend is running for API calls.  
