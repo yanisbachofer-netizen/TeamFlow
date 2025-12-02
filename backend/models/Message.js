@@ -1,9 +1,10 @@
 class Message {
-  constructor({ id, content, senderId, createdAt }) {
+  constructor({ id, content, senderId }) {
     this.id = id;
     this.content = content;
     this.senderId = senderId;
-    this.createdAt = createdAt || new Date().toISOString();
+    this.createdAt = new Date().toLocaleString(); // Actual date
   }
 }
+
 module.exports = Message;
