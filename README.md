@@ -74,4 +74,29 @@ npm start
 ```
 
 - React app runs on \`http://localhost:3000\`.  
-- Ensure the backend is running for API calls.  
+- Ensure the backend is running for API calls.
+
+
+
+# TailwindCSS — Initial Setup
+
+The TailwindCSS styling part has been initialized.
+For now, only the basic environment has been prepared to start the UI work later.
+
+## Current progress :
+
+TailwindCSS is installed and correctly linked to the React project.
+
+A first exploration of the project’s pages has been done to plan the upcoming styling tasks.
+
+Early tests of component styling have been made (colors, spacing, layout structure).
+
+## Next steps :
+
+Define a small set of reusable utility classes to ensure consistency.
+
+Coordinate with the frontend page owners before applying UI changes.
+
+Start styling the Login and Dashboard pages once their structure is finalized.
+
+This section will be updated as the design progresses.
