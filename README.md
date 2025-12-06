@@ -76,19 +76,28 @@ npm start
 - React app runs on \`http://localhost:3000\`.  
 - Ensure the backend is running for API calls.
 
-# Frontend Entrypoint & Login Page
+## Frontend Entrypoint & Login Page
 
 The frontend entrypoint of TeamFlow is based on the files main.jsx and App.jsx, which initialize the React application and set up the global routing structure.
 This includes the navigation between the main pages of the project: Login, Dashboard, Tasks, Users, and Messages.
 This setup provides the foundation on which the rest of the frontend will be developed.
 
-Login Page (Home Screen)
+### Login Page (Home Screen)
 
 The home screen of the application is the Login page, where users will authenticate before accessing the application.
 I created the initial structure of this page, which includes a basic layout and placeholder content.
 This prepares the UI for the future integration of the authentication logic (JWT) handled by the backend and the corresponding frontend services.
 
 This work establishes the starting point of the user experience and enables the rest of the frontend to be implemented smoothly.
+
+### Users Page
+
+The Users page allows team members to view and manage user information inside the application.  
+The initial structure has been implemented: displaying the user list, accessing individual profile details, and integrating navigation with the main sections (Login, Dashboard, Taskboard, Messages).  
+
+This first version prepares the integration of profile update features (editing personal information, role, and active status) and future administration actions.  
+It acts as the foundation of the user management module, designed to work consistently with the dedicated backend API.
+
 
 # TailwindCSS — Initial Setup
 
