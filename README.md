@@ -17,7 +17,7 @@ This repository contains both the **backend** (Node.js + Express + Lowdb) and th
 | Clément Pitrat | ClementPitrat / Clément Pitrat 20250076S | Setup Frontend entrypoint and App. |
 | | | Frontend Login page. |
 | Pacal Arnold | | Frontend Dashboard page. |
-| Yanis Gaoui | ultimatoros-hash | Frontend Taskboard page. |
+| Yanis Gaoui | ultimatoros-hash / Yanis Gaoui 20250073S | Frontend Taskboard page. |
 | Hugo Boizet | | Frontend Users page. |
 | Eudes Peyrouny Mazeau | | Frontend Messages page. |
 | Damien Desmons | desmonsdamien03-hue / desmons_damien20250071S | TailwindCSS Styling. |
