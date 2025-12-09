@@ -3,6 +3,10 @@
 The following graphic charter defines the visual identity, design principles, and interface guidelines used in the TeamFlow frontend.  
 It ensures consistency across all pages of the application and supports a clear, modern, and functional user experience.
 
+<p align="center">
+  <img src="logo192.png" alt="System Architecture" width="20%">
+</p>
+
 ## Color Palette
 
 TeamFlow uses a color palette inspired by the React ecosystem and modern SaaS dashboards.
