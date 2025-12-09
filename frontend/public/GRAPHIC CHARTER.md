@@ -3,13 +3,6 @@
 The following graphic charter defines the visual identity, design principles, and interface guidelines used in the TeamFlow frontend.  
 It ensures consistency across all pages of the application and supports a clear, modern, and functional user experience.
 
-## Visual Identity Objective
-
-- Establish a clean and modern design system aligned with the technologies used (React and TailwindCSS).
-- Ensure visual consistency across all frontend pages (Login, Dashboard, Taskboard, Users, Messages).
-- Provide a readable and structured interface that supports productivity.
-- Define a reusable design foundation for all UI components.
-
 ## Color Palette
 
 TeamFlow uses a color palette inspired by the React ecosystem and modern SaaS dashboards.
