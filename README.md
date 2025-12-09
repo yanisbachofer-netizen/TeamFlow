@@ -22,7 +22,7 @@ This repository contains both the **backend** (Node.js + Express + Lowdb) and th
 | Eudes Peyrouny Mazeau | | Frontend Messages page. |
 | Damien Desmons | desmonsdamien03-hue / desmons_damien20250071S | TailwindCSS Styling. |
 | Garance Poignart | gpoignart / GarancePoignart_20250009S | Setup Backend entrypoint, models and database. Backend Messages API. |
-| Gauthier Humeau |  | Backend Authentification. Backend Login Management API. |
+| Gauthier Humeau | ghumeau04 / Gauthier Humeau 20250074S | Backend Authentification. Backend Login Management API. |
 | Clément Nicole | Clementncl / Clément Nicole 20250054S | Backend User Management API. |
 | Faustine Picavet | | Backend Task Management API. |
 | | | Backend Statistics API. |
