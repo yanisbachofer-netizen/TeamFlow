@@ -25,7 +25,6 @@ This repository contains both the **backend** (Node.js + Express + Lowdb) and th
 | Gauthier Humeau |  | Backend Authentification. Backend Login Management API. |
 | Clément Nicole | Clementncl / Clément Nicole 20250054S | Backend User Management API. |
 | Faustine Picavet | | Backend Task Management API. |
-| | | Backend Task Filters API. |
 | | | Backend Statistics API. |
 
 ## Installation & Usage Guide
