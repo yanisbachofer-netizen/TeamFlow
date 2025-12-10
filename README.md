@@ -15,10 +15,10 @@ This repository contains both the **backend** (Node.js + Express + Lowdb) and th
 | Name               | GitHub Account                     | Role |
 |-------------------|----------------------------------|------|
 | Clément Pitrat | ClementPitrat / Clément Pitrat 20250076S | Setup Frontend entrypoint and App. |
-| Hugo Boizet | | Frontend Login page. |
+| Hugo Boizet | hugoboizet | Frontend Login page. |
 | Pacal Arnold | | Frontend Dashboard page. |
 | Yanis Gaoui | ultimatoros-hash / Yanis Gaoui 20250073S | Frontend Taskboard page + Backend Task Filters API |
-| Hugo Boizet | | Frontend Users page. |
+| Hugo Boizet | hugoboizet | Frontend Users page. |
 | Eudes Peyrouny Mazeau | | Frontend Messages page. |
 | Damien Desmons | desmonsdamien03-hue / desmons_damien20250071S | TailwindCSS Styling. |
 | Garance Poignart | gpoignart / GarancePoignart_20250009S | Setup Backend entrypoint, models and database. Backend Messages API. |
