@@ -1,35 +1,39 @@
 const { db } = require("../db");
 
-// Filter helper
-function filterTasks({ userId, status, assignedTo, search }) {
-    let tasks = db.data.tasks;
+/**
+ * filterTasks({ userId, status, assignedTo, search })
+ * - Expects db.read() to have already been called by the caller (routes/tasks.js does this).
+ * - Returns an array of tasks filtered by:
+ *    - userAllowedIds includes userId (if provided)
+ *    - status (if provided)
+ *    - assignedTo (if provided)
+ *    - search (text matched against title, description, assignedTo)
+ */
+function filterTasks({ userId, status, assignedTo, search } = {}) {
+  const tasks = Array.isArray(db.data && db.data.tasks) ? db.data.tasks : [];
 
-    // Only tasks visible by this user
-    tasks = tasks.filter(t =>
-        t.userAllowedIds &&
-        t.userAllowedIds.map(String).includes(String(userId))
-    );
+  const q = search ? String(search).trim().toLowerCase() : null;
 
-    // Filter by status
-    if (status) {
-        tasks = tasks.filter(t => t.status === status);
+  return tasks.filter(t => {
+    // only return tasks visible to the user if userId provided
+    if (userId) {
+      const allowed = Array.isArray(t.userAllowedIds)
+        ? t.userAllowedIds.map(String).includes(String(userId))
+        : false;
+      if (!allowed) return false;
     }
 
-    // Filter by assigned user
-    if (assignedTo) {
-        tasks = tasks.filter(t => String(t.assignedTo) === String(assignedTo));
+    if (status && String(t.status) !== String(status)) return false;
+
+    if (assignedTo && String(t.assignedTo) !== String(assignedTo)) return false;
+
+    if (q) {
+      const hay = `${t.title || ""} ${t.description || ""} ${t.assignedTo || ""}`.toLowerCase();
+      if (!hay.includes(q)) return false;
     }
 
-    // Search in title/description
-    if (search) {
-        const keyword = search.toLowerCase();
-        tasks = tasks.filter(t =>
-            (t.title && t.title.toLowerCase().includes(keyword)) ||
-            (t.description && t.description.toLowerCase().includes(keyword))
-        );
-    }
-
-    return tasks;
+    return true;
+  });
 }
 
 module.exports = { filterTasks };
