@@ -25,6 +25,21 @@ router.get("/", async (req, res) => {
     res.json(tasks);
 });
 
+// GET /tasks/filter
+router.get("/filter", async (req, res) => {
+    await db.read();
+
+    const { userId, status, assignedTo, search } = req.query;
+
+    if (!userId) {
+        return res.status(400).json({ error: "userId is required" });
+    }
+
+    const tasks = filterTasks({ userId, status, assignedTo, search });
+
+    res.json(tasks);
+});
+
 // 2. POST /tasks
 // create a new task
 router.post("/", async (req, res) => {
