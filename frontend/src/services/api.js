@@ -1,39 +1,40 @@
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE = (typeof process !== 'undefined' && process.env && process.env.REACT_APP_API_BASE) ? process.env.REACT_APP_API_BASE : '';
+
+async function handleResponse(res) {
+  const text = await res.text();
+  let data;
+  try {
+    data = text ? JSON.parse(text) : null;
+  } catch (e) {
+    data = text;
+  }
+  if (!res.ok) {
+    const err = new Error(data && data.message ? data.message : res.statusText || 'API Error');
+    err.status = res.status;
+    err.data = data;
+    throw err;
+  }
+  return data;
+}
 
 /**
- * Get all tasks for a user
- * @param {number|string} userId
+ * GET /tasks
+ * Returns: array of task objects
  */
-export const getTasks = async (userId) => {
-  try {
-    const res = await fetch(`${API_BASE_URL}/tasks?userId=${userId}`);
-    if (!res.ok) throw new Error("Failed to fetch tasks");
-    return await res.json();
-  } catch (err) {
-    console.error("Error fetching tasks:", err);
-    return [];
-  }
-};
+export async function getTasks() {
+  const res = await fetch(`${API_BASE}/tasks`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+  });
+  return handleResponse(res);
+}
 
-/**
- * Update a task by id
- * @param {number} taskId
- * @param {object} updates
- */
-export const updateTask = async (taskId, updates) => {
-  try {
-    const res = await fetch(`${API_BASE_URL}/tasks/${taskId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(updates)
-    });
-
-    if (!res.ok) throw new Error("Failed to update task");
-    return await res.json();
-  } catch (err) {
-    console.error("Error updating task:", err);
-    return null;
-  }
-};
+export async function updateTask(task) {
+  const res = await fetch(`${API_BASE}/tasks`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify(task),
+  });
+  return handleResponse(res);
