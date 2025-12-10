@@ -1,41 +1,64 @@
-import React from "react";
-
-const TaskCard = ({ task, onStatusChange }) => {
-  const getStatusColor = (status) => {
-    switch (status) {
-      case "todo":
-        return "bg-gray-100 border-gray-300";
-      case "in-progress":
-        return "bg-blue-100 border-blue-300";
-      case "done":
-        return "bg-green-100 border-green-300";
-      default:
-        return "bg-white border-gray-200";
-    }
+export default function TaskCard({ task }) {
+  const statusColor = {
+    todo: "#FACC15",        // Yellow
+    "in-progress": "#4F46E5", // Indigo
+    done: "#22C55E",        // Green
   };
 
   return (
-    <div className={`p-4 border rounded-lg shadow-sm ${getStatusColor(task.status)}`}>
-      <h3 className="font-semibold text-lg mb-1">{task.title}</h3>
-      <p className="text-sm text-gray-600 mb-2">{task.description}</p>
+    <div style={styles.card}>
+      <div style={{ ...styles.statusBar, backgroundColor: statusColor[task.status] }} />
+      <h4 style={styles.title}>{task.title}</h4>
+      <p style={styles.desc}>{task.description}</p>
 
-      <div className="flex items-center justify-between">
-        <span className="text-xs font-medium bg-gray-200 px-2 py-1 rounded">
-          {task.status}
-        </span>
-
-        <select
-          className="text-sm border rounded px-2 py-1"
-          value={task.status}
-          onChange={(e) => onStatusChange(task.id, e.target.value)}
-        >
-          <option value="todo">To do</option>
-          <option value="in-progress">In progress</option>
-          <option value="done">Done</option>
-        </select>
+      <div style={styles.footer}>
+        <span style={styles.assigned}>👤 {task.assignedTo || "Unassigned"}</span>
+        <button style={styles.editBtn}>✏️ Edit</button>
       </div>
     </div>
   );
-};
+}
 
-export default TaskCard;
+const styles = {
+  card: {
+    background: "#FFFFFF",
+    borderRadius: "12px",
+    border: "1px solid #E5E7EB",
+    boxShadow: "0 4px 8px rgba(0,0,0,0.03)",
+    padding: "16px",
+    marginBottom: "16px",
+  },
+  statusBar: {
+    height: "6px",
+    borderRadius: "999px",
+    marginBottom: "10px",
+  },
+  title: {
+    fontSize: "16px",
+    fontWeight: "600",
+    color: "#111827",
+    marginBottom: "6px",
+  },
+  desc: {
+    fontSize: "14px",
+    color: "#6B7280",
+    marginBottom: "12px",
+  },
+  footer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  assigned: {
+    fontSize: "12px",
+    color: "#6B7280",
+  },
+  editBtn: {
+    background: "#F9FAFB",
+    border: "1px solid #E5E7EB",
+    borderRadius: "8px",
+    padding: "6px 10px",
+    cursor: "pointer",
+    fontSize: "12px",
+  },
+};
