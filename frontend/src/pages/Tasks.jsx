@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TaskCard from "../components/TaskCard";
-import { getTasks, updateTask } from "../services/api";
+import { getFilteredTasks } from "../services/taskService";
 
-const Tasks = () => {
+export default function Tasks() {
   const [tasks, setTasks] = useState([]);
-  const [filter, setFilter] = useState("all");
 
-  // Simulated logged user id (replace with real one from auth later)
-  const userId = 1;
+  const USER_ID = 1;
 
-  const loadTasks = async () => {
-    const data = await getTasks(userId);
+  const loadTasks = async (filters = {}) => {
+    const data = await getFilteredTasks({ userId: USER_ID, ...filters });
     setTasks(data);
   };
 
@@ -18,53 +16,85 @@ const Tasks = () => {
     loadTasks();
   }, []);
 
-  const handleStatusChange = async (taskId, newStatus) => {
-    await updateTask(taskId, { status: newStatus });
-    loadTasks();
+  const filterByStatus = (status) => {
+    loadTasks({ status });
   };
 
-  const filteredTasks = tasks.filter((task) => {
-    if (filter === "all") return true;
-    return task.status === filter;
-  });
+  const columns = {
+    todo: tasks.filter((t) => t.status === "todo"),
+    "in-progress": tasks.filter((t) => t.status === "in-progress"),
+    done: tasks.filter((t) => t.status === "done"),
+  };
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Task Board</h1>
+    <div style={styles.page}>
+      <h2 style={styles.title}>Task Board</h2>
 
-      {/* Filter bar */}
-      <div className="flex gap-2 mb-6">
-        {["all", "todo", "in-progress", "done"].map((status) => (
-          <button
-            key={status}
-            className={`px-4 py-2 rounded border ${
-              filter === status
-                ? "bg-blue-600 text-white border-blue-600"
-                : "bg-white text-gray-700"
-            }`}
-            onClick={() => setFilter(status)}
-          >
-            {status}
-          </button>
-        ))}
+      {/* FILTER BAR */}
+      <div style={styles.filterBar}>
+        <button style={styles.filterBtn} onClick={() => loadTasks()}>All</button>
+        <button style={styles.filterBtn} onClick={() => filterByStatus("todo")}>To Do</button>
+        <button style={styles.filterBtn} onClick={() => filterByStatus("in-progress")}>In Progress</button>
+        <button style={styles.filterBtn} onClick={() => filterByStatus("done")}>Done</button>
       </div>
 
-      {/* Task list */}
-      {filteredTasks.length === 0 ? (
-        <p className="text-gray-500">No tasks found.</p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredTasks.map((task) => (
-            <TaskCard
-              key={task.id}
-              task={task}
-              onStatusChange={handleStatusChange}
-            />
-          ))}
-        </div>
-      )}
+      {/* KANBAN BOARD */}
+      <div style={styles.board}>
+        {Object.keys(columns).map((key) => (
+          <div key={key} style={styles.column}>
+            <h3 style={styles.columnTitle}>{key.replace("-", " ").toUpperCase()}</h3>
+            {columns[key].map((task) => (
+              <TaskCard key={task.id} task={task} />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
-};
+}
 
-export default Tasks;
+const styles = {
+  page: {
+    background: "#F9FAFB",
+    minHeight: "100vh",
+    padding: "24px",
+    fontFamily: "Inter, system-ui",
+  },
+  title: {
+    fontSize: "24px",
+    fontWeight: "700",
+    marginBottom: "20px",
+    color: "#111827",
+  },
+  filterBar: {
+    display: "flex",
+    gap: "12px",
+    marginBottom: "24px",
+  },
+  filterBtn: {
+    background: "#61DAFB",
+    border: "none",
+    borderRadius: "10px",
+    padding: "10px 16px",
+    fontWeight: "600",
+    cursor: "pointer",
+    boxShadow: "0 4px 8px rgba(0,0,0,0.05)",
+  },
+  board: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "20px",
+  },
+  column: {
+    background: "#FFFFFF",
+    borderRadius: "16px",
+    padding: "16px",
+    border: "1px solid #E5E7EB",
+  },
+  columnTitle: {
+    fontSize: "16px",
+    fontWeight: "600",
+    marginBottom: "12px",
+    color: "#0B253A",
+  },
+};
