@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Routes,
   Route,
@@ -30,10 +31,12 @@ function PrivateRoute({ children }) {
   return children;
 }
 
+
 function AppLayout({ children }) {
   const location = useLocation();
   const auth = isAuthenticated();
 
+  
   const isActive = (path) =>
     location.pathname === path
       ? "text-blue-600 border-b-2 border-blue-600"
@@ -144,5 +147,5 @@ function App() {
     </AppLayout>
   );
 }
-
 export default App;
+
