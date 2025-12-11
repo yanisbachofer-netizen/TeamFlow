@@ -16,7 +16,7 @@ This repository contains both the **backend** (Node.js + Express + Lowdb) and th
 |-------------------|----------------------------------|------|
 | Clément Pitrat | ClementPitrat / Clément Pitrat 20250076S | Setup Frontend entrypoint and App. |
 | Hugo Boizet | hugoboizet | Frontend Login page. |
-| Pacal Arnold | | Frontend Dashboard page. |
+| Pascal Arnold | | Frontend Dashboard page. |
 | Yanis Gaoui | ultimatoros-hash / Yanis Gaoui 20250073S | Frontend Taskboard page + Backend Task Filters API |
 | Hugo Boizet | hugoboizet | Frontend Users page. |
 | Eudes Peyrouny Mazeau | | Frontend Messages page. |
@@ -26,6 +26,7 @@ This repository contains both the **backend** (Node.js + Express + Lowdb) and th
 | Clément Nicole | Clementncl / Clément Nicole 20250054S | Backend User Management API. |
 | Faustine Picavet | | Backend Task Management API. |
 | Clément Pitrat | ClementPitrat / Clément Pitrat 20250076S | Backend Statistics API. |
+| Yanis Bachofer | yanisbachofer-netizen / Yanis Bachofer 20250063S | Frontend Login UI |
 
 ## Installation & Usage Guide
 
